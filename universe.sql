@@ -88,7 +88,9 @@ ALTER SEQUENCE public.civilization_civilization_id_seq OWNED BY public.civilizat
 CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
     name character varying(50) NOT NULL,
-    star_count integer NOT NULL
+    star_count integer NOT NULL,
+    galaxy_type character varying(30),
+    diameter numeric(7,2)
 );
 
 
@@ -123,7 +125,9 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 CREATE TABLE public.moon (
     moon_id integer NOT NULL,
     planet_id integer NOT NULL,
-    name character varying(50) NOT NULL
+    name character varying(50) NOT NULL,
+    distance numeric(7,2),
+    diameter numeric(7,2)
 );
 
 
@@ -196,7 +200,8 @@ CREATE TABLE public.star (
     star_id integer NOT NULL,
     galaxy_id integer NOT NULL,
     name character varying(50) NOT NULL,
-    diameter numeric(7,2) NOT NULL
+    diameter numeric(7,2) NOT NULL,
+    color character varying(30)
 );
 
 
@@ -272,38 +277,38 @@ INSERT INTO public.civilization VALUES (3, 12, 4000, NULL, true, 'Vulcans');
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.galaxy VALUES (1, 'Milky way', 100000);
-INSERT INTO public.galaxy VALUES (2, 'Andromede', 100000);
-INSERT INTO public.galaxy VALUES (3, 'Nexus', 100000);
-INSERT INTO public.galaxy VALUES (4, 'Far far away', 100000);
-INSERT INTO public.galaxy VALUES (5, 'Good eye', 100000);
-INSERT INTO public.galaxy VALUES (6, 'Devil ass', 100000);
+INSERT INTO public.galaxy VALUES (1, 'Milky way', 100000, NULL, NULL);
+INSERT INTO public.galaxy VALUES (2, 'Andromede', 100000, NULL, NULL);
+INSERT INTO public.galaxy VALUES (3, 'Nexus', 100000, NULL, NULL);
+INSERT INTO public.galaxy VALUES (4, 'Far far away', 100000, NULL, NULL);
+INSERT INTO public.galaxy VALUES (5, 'Good eye', 100000, NULL, NULL);
+INSERT INTO public.galaxy VALUES (6, 'Devil ass', 100000, NULL, NULL);
 
 
 --
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.moon VALUES (1, 3, 'Moon');
-INSERT INTO public.moon VALUES (2, 4, 'Fobos');
-INSERT INTO public.moon VALUES (3, 4, 'Deimos');
-INSERT INTO public.moon VALUES (4, 5, 'Io');
-INSERT INTO public.moon VALUES (5, 5, 'Europa');
-INSERT INTO public.moon VALUES (6, 5, 'Ganimedes');
-INSERT INTO public.moon VALUES (7, 5, 'Calisto');
-INSERT INTO public.moon VALUES (8, 6, 'Triton');
-INSERT INTO public.moon VALUES (9, 6, 'Titan');
-INSERT INTO public.moon VALUES (10, 6, 'Encelado');
-INSERT INTO public.moon VALUES (11, 6, 'Dione');
-INSERT INTO public.moon VALUES (12, 6, 'Fenrir');
-INSERT INTO public.moon VALUES (13, 7, 'Ariel');
-INSERT INTO public.moon VALUES (14, 7, 'Miranda');
-INSERT INTO public.moon VALUES (15, 9, 'Caronte');
-INSERT INTO public.moon VALUES (16, 11, 'Omicron 1');
-INSERT INTO public.moon VALUES (17, 11, 'Omicron 2');
-INSERT INTO public.moon VALUES (18, 11, 'Omicron 3');
-INSERT INTO public.moon VALUES (19, 11, 'Omicron 4');
-INSERT INTO public.moon VALUES (20, 11, 'Omicron 5');
+INSERT INTO public.moon VALUES (1, 3, 'Moon', NULL, NULL);
+INSERT INTO public.moon VALUES (2, 4, 'Fobos', NULL, NULL);
+INSERT INTO public.moon VALUES (3, 4, 'Deimos', NULL, NULL);
+INSERT INTO public.moon VALUES (4, 5, 'Io', NULL, NULL);
+INSERT INTO public.moon VALUES (5, 5, 'Europa', NULL, NULL);
+INSERT INTO public.moon VALUES (6, 5, 'Ganimedes', NULL, NULL);
+INSERT INTO public.moon VALUES (7, 5, 'Calisto', NULL, NULL);
+INSERT INTO public.moon VALUES (8, 6, 'Triton', NULL, NULL);
+INSERT INTO public.moon VALUES (9, 6, 'Titan', NULL, NULL);
+INSERT INTO public.moon VALUES (10, 6, 'Encelado', NULL, NULL);
+INSERT INTO public.moon VALUES (11, 6, 'Dione', NULL, NULL);
+INSERT INTO public.moon VALUES (12, 6, 'Fenrir', NULL, NULL);
+INSERT INTO public.moon VALUES (13, 7, 'Ariel', NULL, NULL);
+INSERT INTO public.moon VALUES (14, 7, 'Miranda', NULL, NULL);
+INSERT INTO public.moon VALUES (15, 9, 'Caronte', NULL, NULL);
+INSERT INTO public.moon VALUES (16, 11, 'Omicron 1', NULL, NULL);
+INSERT INTO public.moon VALUES (17, 11, 'Omicron 2', NULL, NULL);
+INSERT INTO public.moon VALUES (18, 11, 'Omicron 3', NULL, NULL);
+INSERT INTO public.moon VALUES (19, 11, 'Omicron 4', NULL, NULL);
+INSERT INTO public.moon VALUES (20, 11, 'Omicron 5', NULL, NULL);
 
 
 --
@@ -328,12 +333,12 @@ INSERT INTO public.planet VALUES (12, 2, 'Vulcano', 0, true);
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.star VALUES (1, 1, 'Sun', 5000.00);
-INSERT INTO public.star VALUES (2, 2, 'Vega', 10000.00);
-INSERT INTO public.star VALUES (3, 1, 'Big red', 30000.00);
-INSERT INTO public.star VALUES (4, 1, 'Orion', 400.00);
-INSERT INTO public.star VALUES (5, 2, 'fgf453001', 6000.00);
-INSERT INTO public.star VALUES (6, 4, 'gg454-g', 68800.00);
+INSERT INTO public.star VALUES (1, 1, 'Sun', 5000.00, NULL);
+INSERT INTO public.star VALUES (2, 2, 'Vega', 10000.00, NULL);
+INSERT INTO public.star VALUES (3, 1, 'Big red', 30000.00, NULL);
+INSERT INTO public.star VALUES (4, 1, 'Orion', 400.00, NULL);
+INSERT INTO public.star VALUES (5, 2, 'fgf453001', 6000.00, NULL);
+INSERT INTO public.star VALUES (6, 4, 'gg454-g', 68800.00, NULL);
 
 
 --
